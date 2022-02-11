@@ -14,6 +14,7 @@ class Snake:
         print("snake")
 
     def updateDirection(self, key):
+        # bug dans les directions (et enlever les chiffres)
         if key == Qt.Key_Left:
             if self.direction != 1:
                 self.direction = 2
