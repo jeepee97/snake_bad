@@ -3,15 +3,17 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 class Snake:
-    # enlever tous les (1,2,3,4) qui serve de direction
+    LEFT = 1
+    RIGHT = 2
+    DOWN = 3
+    UP = 4
 
     def __init__(self):
         self.body = [[5, 10], [5, 11]]
         self.head = [self.body[0][0], self.body[0][1]]
         self.grow = False
         self.direction = 2
-        self.color = 0xff08fc #0xfca311
-        print("snake")
+        self.color = 0xfca311
 
     def updateDirection(self, key):
         # bug dans les directions (et enlever les chiffres)
@@ -37,11 +39,4 @@ class Snake:
             self.head = [self.head[0], self.head[1] + 1]
         if self.direction == 4:
             self.head = [self.head[0], self.head[1] - 1]
-
         self.body.insert(0, self.head)
-        # ne pas ecrire condition == False
-        if (self.grow == False):
-            self.body.pop()
-        else:
-            msg2statusbar.emit(str(len(self.body)-2))
-            self.grow = False
